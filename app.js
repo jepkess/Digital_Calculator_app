@@ -21,7 +21,28 @@ buttons.forEach((btn) =>{
             //To display value on btn press
             realTimeScreenValue.push(btn.value)
             currentInput.innerHTML = realTimeScreenValue.join('');
+            //To evaluate answer in real time
+            if (btn.classList.container('num_btn')){
+                answerScreen.innerHTML = eval(realTimeScreenValue.join(''));
+            }
         }
+        //when erase button is clicked
+        if (btn.id.match('erase')){
+            realTimeScreenValue.pop();
+            currentInput.innerHTML = realTimeScreenValue.join('');
+            answerScreen.innerHTML = eval(realTimeScreenValue.join(''));
+        }
+        //when clicked button is evaluate button
+        if (btn.id.match('evaluate')){
+            currentInput.className = 'answerScreen';
+            answerScreen.className = 'currentInput';
+            answerScreen.getElementsByClassName.color = "white";
+        }
+        //To prevent undefined error in screen
+        if (typeof Eval(realTimeScreenValue.join('')) == 'undefined'){
+            answerScreen.innerHTML = 0 
+        }
+
     })
 })
 
